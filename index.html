@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Algoritma & Pemrograman</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-code"></i> Algoritma & Pemrograman</h1>
+            <div class="teacher-info">
+                <div class="teacher-name">Subiono Ahmad</div>
+                <div class="teacher-title">Pengampu Mapel Informatika</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-grade="10">Kelas X</button>
+            <button class="nav-tab" data-grade="11">Kelas XI</button>
+            <button class="nav-tab" data-grade="12">Kelas XII</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Grade Selection View -->
+        <div id="grade-view" class="content-section active">
+            <div class="grade-container">
+                <h2 id="grade-title">Kelas X - Algoritma & Pemrograman</h2>
+                <div class="difficulty-grid">
+                    <div class="difficulty-card" data-difficulty="dasar">
+                        <div class="card-header">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Materi Dasar</h3>
+                        </div>
+                        <p>Konsep dasar algoritma dan pemrograman</p>
+                        <div class="card-stats">
+                            <span class="lesson-count">5 Materi</span>
+                            <span class="quiz-count">20 Soal</span>
+                        </div>
+                    </div>
+                    <div class="difficulty-card" data-difficulty="menengah">
+                        <div class="card-header">
+                            <i class="fas fa-tree"></i>
+                            <h3>Materi Menengah</h3>
+                        </div>
+                        <p>Struktur kontrol dan fungsi</p>
+                        <div class="card-stats">
+                            <span class="lesson-count">4 Materi</span>
+                            <span class="quiz-count">15 Soal</span>
+                        </div>
+                    </div>
+                    <div class="difficulty-card" data-difficulty="lanjut">
+                        <div class="card-header">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Materi Lanjut</h3>
+                        </div>
+                        <p>Algoritma kompleks dan optimasi</p>
+                        <div class="card-stats">
+                            <span class="lesson-count">3 Materi</span>
+                            <span class="quiz-count">10 Soal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Material List View -->
+        <div id="material-list" class="content-section">
+            <div class="breadcrumb">
+                <span class="breadcrumb-item" id="breadcrumb-home">Beranda</span>
+                <i class="fas fa-chevron-right"></i>
+                <span class="breadcrumb-item" id="breadcrumb-grade"></span>
+                <i class="fas fa-chevron-right"></i>
+                <span class="breadcrumb-item active" id="breadcrumb-difficulty"></span>
+            </div>
+            <div class="material-container">
+                <h2 id="material-title"></h2>
+                <div id="material-grid" class="material-grid"></div>
+            </div>
+        </div>
+
+        <!-- Learning Content View -->
+        <div id="learning-content" class="content-section">
+            <div class="content-header">
+                <button class="back-btn" id="back-to-materials">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </button>
+                <h2 id="content-title"></h2>
+            </div>
+            <div class="learning-tabs">
+                <button class="learning-tab active" data-section="apersepsi">Apersepsi</button>
+                <button class="learning-tab" data-section="pemantik">Pertanyaan Pemantik</button>
+                <button class="learning-tab" data-section="materi">Materi Inti</button>
+                <button class="learning-tab" data-section="refleksi">Refleksi</button>
+                <button class="learning-tab quiz-tab" data-section="quiz">Quiz</button>
+            </div>
+            <div class="content-body">
+                <div id="apersepsi-content" class="tab-content active"></div>
+                <div id="pemantik-content" class="tab-content"></div>
+                <div id="materi-content" class="tab-content"></div>
+                <div id="refleksi-content" class="tab-content"></div>
+                <div id="quiz-content" class="tab-content"></div>
+            </div>
+        </div>
+
+        <!-- Visualization Modal -->
+        <div id="visualization-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="visualization-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quiz Results Modal -->
+    <div id="results-modal" class="modal">
+        <div class="modal-content results-modal">
+            <div class="results-header">
+                <h2><i class="fas fa-chart-bar"></i> Hasil Quiz</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="results-body">
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="score-percentage">0</span>
+                        <small>%</small>
+                    </div>
+                    <div class="score-details">
+                        <p>Skor: <span id="score-points">0</span>/<span id="total-questions">0</span></p>
+                        <p>Kategori: <span id="score-category">-</span></p>
+                    </div>
+                </div>
+                <div class="score-breakdown">
+                    <div class="breakdown-item correct">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Benar: <span id="correct-count">0</span></span>
+                    </div>
+                    <div class="breakdown-item incorrect">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Salah: <span id="incorrect-count">0</span></span>
+                    </div>
+                </div>
+                <button class="retry-btn" id="retry-quiz">
+                    <i class="fas fa-redo"></i> Ulangi Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
